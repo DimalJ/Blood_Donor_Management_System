@@ -50,7 +50,7 @@ public class DonorRegisterServlet extends HttpServlet {
 	        	 boolean isSuccess = donorCRUDDao.insertDonor(firstName, lastName, city, birthday, bloodType, email, nic, password, mobile);
 	             if (isSuccess) {
 	                 // Redirect to DonorHome.jsp if registration is successful
-	             	request.setAttribute("Message", "Registration successful.");
+	             	 request.setAttribute("Message", "Registration successful.");
 	                 RequestDispatcher dispatcher = request.getRequestDispatcher("DonorHome.jsp");
 	                 dispatcher.forward(request, response);
 	             } else {

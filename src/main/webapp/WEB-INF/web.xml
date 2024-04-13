@@ -21,4 +21,10 @@
     <servlet-name>DonorRegisterServlet</servlet-name>
     <servlet-class>controller.DonorRegisterServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>controller.LoginServlet</servlet-class>
+  </servlet>
 </web-app>
