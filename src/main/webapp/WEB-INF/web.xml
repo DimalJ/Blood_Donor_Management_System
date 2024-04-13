@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>Blood_Donor_Management_System</display-name>
+   <welcome-file-list>
+    <welcome-file>CampaignListServlet</welcome-file>
+    <welcome-file>CampaignListServlet</welcome-file>
+    <welcome-file>CampaignListServlet</welcome-file>
+    <welcome-file>CampaignListServlet</welcome-file>
+    <welcome-file>CampaignListServlet</welcome-file>
+    <welcome-file>CampaignListServlet</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>CampaignListServlet</display-name>
+    <servlet-name>CampaignListServlet</servlet-name>
+    <servlet-class>controller.CampaignListServlet</servlet-class>
+  </servlet>
+   <servlet>
+    <description></description>
+    <display-name>DonorRegisterServlet</display-name>
+    <servlet-name>DonorRegisterServlet</servlet-name>
+    <servlet-class>controller.DonorRegisterServlet</servlet-class>
+  </servlet>
+</web-app>
