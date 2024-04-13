@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,9 +34,13 @@
     </style>
 </head>
 <body>
+<div>
+
+</div>
     <div class="login-box">
         <h2>Login</h2>
-        <form>
+        <form action="<%= request.getServletContext().getContextPath()%>/LoginServlet" method="POST">
+        <%= request.getAttribute("Message") %>
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" placeholder="Enter username">
