@@ -34,20 +34,18 @@
     </style>
 </head>
 <body>
-<div>
 
-</div>
     <div class="login-box">
         <h2>Login</h2>
         <form action="<%= request.getServletContext().getContextPath()%>/LoginServlet" method="POST">
-        <%= request.getAttribute("Message") %>
+        	${Message}
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter username">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Login</button>
             <p>Don't have an account? <a href="registration.jsp">Sign up...</a> </p>
