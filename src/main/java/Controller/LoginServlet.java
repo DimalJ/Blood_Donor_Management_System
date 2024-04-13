@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.LoginDao;
 
@@ -33,7 +34,12 @@ public class LoginServlet extends HttpServlet {
 		String username= request.getParameter("username");
 		String password =request.getParameter("password");
 		String user=loginDao.authenticateUser(username, password);
-		System.out.println(user);
+		String  firstName=loginDao.getFirstName(username);	
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("firstName", firstName);
+		
+		
 		if (user=="Donor") {
 			 request.setAttribute("Message", "Login successful.");
              RequestDispatcher dispatcher = request.getRequestDispatcher("DonorHome.jsp");
