@@ -25,7 +25,10 @@
     <h2>Home</h2>
     <a href="addCampaign.jsp" class="btn btn-primary">Add Campaign</a>
 </div>
-
+<div class="container mt-5">
+    <h2>Home</h2>
+    <a href="<%= request.getServletContext().getContextPath()%>/AdminCampaignListServlet" class="btn btn-primary">Campaign List</a>
+</div>
 <!-- Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

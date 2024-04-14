@@ -3,7 +3,7 @@
 <%@ page import="model.Donor" %>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  <a class="navbar-brand" href="#">Sri Lankan National Blood Transfusion Service</a>
+  <a class="navbar-brand" href="AdminHome.jsp">Sri Lankan National Blood Transfusion Service</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

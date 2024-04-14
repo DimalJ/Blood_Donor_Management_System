@@ -8,7 +8,9 @@ import java.util.Date;
 public class CampaignCRUDDao {
 
 	private static final String addCampaign = "INSERT INTO donation_campaigns (date, location, city) VALUES (?, ?, ?)";
-
+	private static final String deleteCampaign = "DELETE FROM donation_campaigns WHERE id = ?";
+	
+	
 	public boolean insertCampaign(Date date, String location, String city) {
         boolean isSuccess = false;
         try (
@@ -30,4 +32,20 @@ public class CampaignCRUDDao {
         }
         return isSuccess;
     }
+	
+
+    public boolean deleteCampaign(int campaignId) throws SQLException {
+        boolean rowDeleted;
+        try (Connection conn = DbConnection.getConnection();
+                PreparedStatement preparedStatement = conn.prepareStatement(deleteCampaign);)
+        {
+        	preparedStatement.setInt(1, campaignId);
+            rowDeleted = preparedStatement.executeUpdate() > 0;
+            conn.close();
+            preparedStatement.close();
+        }
+        
+        return rowDeleted;
+    }
 }
+
