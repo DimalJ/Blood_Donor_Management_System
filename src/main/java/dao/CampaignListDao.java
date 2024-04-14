@@ -18,7 +18,7 @@ java.sql.Date currentDate = new java.sql.Date(new Date().getTime());
 
 	 public ArrayList<Campaign> getCampaignList() {
 		 try {
-			String sql = "SELECT date, location, city FROM donation_campaigns WHERE date >= ? ORDER BY date ASC";
+			String sql = "SELECT * FROM donation_campaigns WHERE date >= ? ORDER BY date ASC";
 			
 			 Connection conn = DbConnection.getConnection();
 			 PreparedStatement preparedStatement = conn.prepareStatement(sql);
@@ -29,12 +29,13 @@ java.sql.Date currentDate = new java.sql.Date(new Date().getTime());
 
 			 // Iterate through the result set
 			 while (resultSet.next()) {
+				 int id = resultSet.getInt("id");
 			     Date date = resultSet.getDate("date");
 			     String location = resultSet.getString("location");
 			     String city = resultSet.getString("city");
 
 			     // Create Campaign object and add it to the list
-			     CampaignList.add(new Campaign(date, location, city));
+			     CampaignList.add(new Campaign(id, date, location, city));
 			 }
 
 			 // Close resources
