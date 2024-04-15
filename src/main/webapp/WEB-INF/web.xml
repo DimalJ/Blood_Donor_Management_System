@@ -51,4 +51,10 @@
     <servlet-name>DeleteCampaignServlet</servlet-name>
     <servlet-class>controller.DeleteCampaignServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>UpdateCampaignServlet</display-name>
+    <servlet-name>UpdateCampaignServlet</servlet-name>
+    <servlet-class>controller.UpdateCampaignServlet</servlet-class>
+  </servlet>
 </web-app>

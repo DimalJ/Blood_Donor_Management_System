@@ -45,7 +45,7 @@
                     <td>${campaign.city}</td>
                     <td>
                         <!-- Update button -->
-                        <a href="UpdateCampaignServlet?id=${campaign.id}" class="btn btn-primary">Update</a>
+                        <a href="updateCampaign.jsp?id=${campaign.id}&date=${campaign.date}&location=${campaign.location}&city=${campaign.city}" class="btn btn-primary">Update</a>
                         
                         <!-- Delete button -->
                          <Button  class="btn btn-danger" onclick="confirmDelete(${campaign.id})">Delete</Button>
