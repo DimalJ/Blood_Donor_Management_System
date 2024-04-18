@@ -4,11 +4,134 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import model.Donor;
 
 public class DonorCRUDDao {
 	private static final String INSERT_DONOR_SQL = "INSERT INTO donors (firstName, lastName, city, birthday, bloodType, email, NIC, password, mobile) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String CHECK_NIC_SQL = "SELECT COUNT(*) AS count FROM donors WHERE NIC = ?";
+	private static final String searchId = "SELECT NIC, firstName, lastName FROM donors WHERE NIC = ?";
+	private static final String searchName = "SELECT NIC, firstName, lastName FROM donors WHERE firstName LIKE ? OR lastName LIKE ?";
 	
+	private  ArrayList<Donor> donors = new ArrayList<Donor>();
+	
+	
+	public ArrayList<Donor> clearDonors() {
+		donors.clear();
+		
+		return donors;
+	 }
+
+public ArrayList<Donor> searchByName(String name) {
+        
+        try (
+        		Connection conn = DbConnection.getConnection();
+      			PreparedStatement ps = conn.prepareStatement(searchName);
+        	){	
+		        	
+		        	ps.setString(1, "%" + name + "%");
+		        	ps.setString(2, "%" + name + "%");
+		            
+	            ResultSet resultSet = ps.executeQuery(); {
+                if (resultSet.next()) {
+                    String NIC = resultSet.getString("NIC");
+                    String firstName = resultSet.getString("firstName");
+                    String lastName = resultSet.getString("lastName");
+                    
+                    donors.add(new Donor(NIC, firstName, lastName));
+                    
+                    
+                }else {
+                	donors=null;
+                }
+	            }
+	            conn.close();
+                ps.close();
+                resultSet.close();
+        	 }catch (SQLException e) {
+                 e.printStackTrace();
+             }
+            
+        
+        return donors;
+    }
+public ArrayList<Donor> searchByNIC(String nic) {
+        
+        try (
+        		Connection conn = DbConnection.getConnection();
+      			PreparedStatement ps = conn.prepareStatement(searchId);
+        	){	
+		        	ps.setString(1, nic);
+		        	
+		            
+	            ResultSet resultSet = ps.executeQuery(); {
+                if (resultSet.next()) {
+                    String NIC = resultSet.getString("NIC");
+                    String firstName = resultSet.getString("firstName");
+                    String lastName = resultSet.getString("lastName");
+                    
+                    donors.add(new Donor(NIC, firstName, lastName));
+                    
+                    
+                }else {
+                	donors=null;
+                }
+	            }
+	            conn.close();
+                ps.close();
+                resultSet.close();
+        	 }catch (SQLException e) {
+                 e.printStackTrace();
+             }
+            
+        
+        return donors;
+    }
+
+	public ArrayList<Donor> searchDonors(String nic, String name) {
+		if (nic == "") {
+            if (name == "") {
+                // Both NIC and name are null, so search by NIC
+                return donors=null;
+            } else {
+                // NIC is null, search by name
+                return searchByName(name);
+            }
+        } else {
+            // NIC is not null, search by NIC
+            return searchByNIC(nic);
+        }
+    
+        /*try (
+        		Connection conn = DbConnection.getConnection();
+      			PreparedStatement ps = conn.prepareStatement(searchDonor);
+        	){	
+		        	ps.setString(1, nic);
+		        	ps.setString(2, "%" + name + "%");
+		        	ps.setString(3, "%" + name + "%");
+		            
+	            ResultSet resultSet = ps.executeQuery(); {
+                while (resultSet.next()) {
+                    String NIC = resultSet.getString("NIC");
+                    String firstName = resultSet.getString("firstName");
+                    String lastName = resultSet.getString("lastName");
+                    
+                    donors.add(new Donor(NIC, firstName, lastName));
+                    
+                    
+                }
+	            }
+	            conn.close();
+                ps.close();
+                resultSet.close();
+        	 }catch (SQLException e) {
+                 e.printStackTrace();
+             }
+            
+        
+        return donors;*/
+    }
 	public boolean isNICUsed(String nic) {
         boolean isUsed = false;
         try (

@@ -21,13 +21,21 @@
 <body>
 <%@include file="navbar.jsp" %>
 	
-<div class="container mt-5">
+<div class="container mt-">
     <h2>Home</h2>
     <a href="addCampaign.jsp" class="btn btn-primary">Add Campaign</a>
 </div>
 <div class="container mt-5">
-    <h2>Home</h2>
+   
     <a href="<%= request.getServletContext().getContextPath()%>/AdminCampaignListServlet" class="btn btn-primary">Campaign List</a>
+</div>
+<div class="container mt-5">
+   
+    <a href="AdminAddDonor.jsp" class="btn btn-primary">Add Donor</a>
+</div>
+<div class="container mt-5">
+   
+    <a href="AdminSearchDonor.jsp" class="btn btn-primary">Search Donor</a>
 </div>
 <!-- Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
