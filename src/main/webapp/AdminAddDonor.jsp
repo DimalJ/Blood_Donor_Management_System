@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donor Registration</title>
+    <title>Add Donor</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
    <script>
@@ -23,9 +22,9 @@
     </script>
 </head>
 <body>
-<%@include file="navbar.jsp" %>  
+
     <div class="container">
-        <h1 class="mt-5 mb-3">Donor Registration</h1>
+        <h1 class="mt-5 mb-3">Add Donor</h1>
         <form action="<%= request.getServletContext().getContextPath()%>/DonorRegisterServlet" method="POST">
             <div class="form-group">
                 <label for="firstName">First Name</label>

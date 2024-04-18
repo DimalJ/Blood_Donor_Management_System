@@ -57,4 +57,10 @@
     <servlet-name>UpdateCampaignServlet</servlet-name>
     <servlet-class>controller.UpdateCampaignServlet</servlet-class>
   </servlet>
+   <servlet>
+    <description></description>
+    <display-name>SearchDonorServlet</display-name>
+    <servlet-name>SearchDonorServlet</servlet-name>
+    <servlet-class>controller.SearchDonorServlet</servlet-class>
+  </servlet>
 </web-app>

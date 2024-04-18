@@ -24,7 +24,14 @@ public class Donor {
         this.mobile = mobile;
     }
 
-    // Getters and Setters
+    public Donor(String nic2, String firstName2, String lastName2) {
+    	this.firstName = firstName2;
+        this.lastName = lastName2;
+        this.nic = nic2;
+       
+	}
+
+	// Getters and Setters
     public String getFirstName() {
         return firstName;
     }
