@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.DonorCRUDDao;
 
@@ -41,6 +42,8 @@ public class DonorRegisterServlet extends HttpServlet {
         String password=request.getParameter("password");
         String mobile = request.getParameter("mobile");
         
+        HttpSession session = request.getSession();
+		session.setAttribute("firstName", firstName);
        boolean isTrue=donorCRUDDao.isNICUsed(nic);
         if(isTrue) {
         	 request.setAttribute("errorMessage", "NIC already used. Please try again.");
