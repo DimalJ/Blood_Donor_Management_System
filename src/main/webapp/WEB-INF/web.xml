@@ -63,4 +63,22 @@
     <servlet-name>SearchDonorServlet</servlet-name>
     <servlet-class>controller.SearchDonorServlet</servlet-class>
   </servlet>
+   <servlet>
+    <description></description>
+    <display-name>DeleteDonorServlet</display-name>
+    <servlet-name>DeleteDonorServlet</servlet-name>
+    <servlet-class>controller.DeleteDonorServlet</servlet-class>
+  </servlet>
+   <servlet>
+   <description></description>
+    <display-name>GetDonorServlet</display-name>
+    <servlet-name>GetDonorServlet</servlet-name>
+    <servlet-class>controller.GetDonorServlet</servlet-class>
+  </servlet>
+ <servlet>
+   <description></description>
+    <display-name>UpdateDonorServlet</display-name>
+    <servlet-name>UpdateDonorServlet</servlet-name>
+    <servlet-class>controller.UpdateDonorServlet</servlet-class>
+  </servlet>
 </web-app>

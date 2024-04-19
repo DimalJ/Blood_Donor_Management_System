@@ -1,6 +1,7 @@
 package model;
 
 public class Donor {
+	private int id;
     private String firstName;
     private String lastName;
     private String city;
@@ -12,8 +13,9 @@ public class Donor {
     private String mobile;
 
     // Constructor
-    public Donor(String firstName, String lastName, String city, String birthday, String bloodType, String email, String nic, String password, String mobile) {
-        this.firstName = firstName;
+    public Donor(int id,String firstName, String lastName, String city, String birthday, String bloodType, String email, String nic, String password, String mobile) {
+        this.setId(id);
+    	this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
         this.birthday = birthday;
@@ -24,7 +26,8 @@ public class Donor {
         this.mobile = mobile;
     }
 
-    public Donor(String nic2, String firstName2, String lastName2) {
+    public Donor(int id2, String nic2, String firstName2, String lastName2) {
+    	this.setId(id2);
     	this.firstName = firstName2;
         this.lastName = lastName2;
         this.nic = nic2;
@@ -102,6 +105,14 @@ public class Donor {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
     

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Search User</title>
-<script>
+<script type="text/javascript">
         function validateForm() {
             var nic = document.getElementById("nic").value;
             var name = document.getElementById("name").value;
@@ -18,7 +18,20 @@
             }
             return true;
         }
-    </script>
+      
+        function confirmDelete(donorId) {
+        	var confirmed = confirm("Are you sure you want to delete this Donor?");
+            
+            if (confirmed) {
+                // Redirect to the delete servlet with the campaignId as a parameter
+                window.location.href = "DeleteDonorServlet?donorId=" + donorId;
+            }
+            
+        }
+        
+ </script>
+    
+    
  <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -40,7 +53,9 @@
         </form>
   </div>
   <br> <br> 
+  	<div class="container">
   	${Message}
+  	</div>
   	<br>
   <div class="container">
     <h2>User List</h2>
@@ -62,10 +77,10 @@
                     <td>${donor.lastName}</td>
                     <td>
                         <!-- Update button -->
-                        <a href="updateCampaign.jsp?id=${campaign.id}&date=${campaign.date}&location=${campaign.location}&city=${campaign.city}" class="btn btn-primary">Update</a>
+                        <a href="<%= request.getServletContext().getContextPath()%>/GetDonorServlet?id=${donor.id}" class="btn btn-primary">Update</a>
                         
                         <!-- Delete button -->
-                         <Button  class="btn btn-danger" onclick="confirmDelete(${campaign.id})">Delete</Button>
+                         <Button  class="btn btn-danger" onclick="confirmDelete(${donor.id})">Delete</Button>
                        
                     </td>
                 </tr>
