@@ -99,4 +99,22 @@
     <servlet-name>DeleteAdminServlet</servlet-name>
     <servlet-class>controller.DeleteAdminServlet</servlet-class>
   </servlet>
+  <servlet>
+  <description></description>
+    <display-name>AddDonationServlet</display-name>
+    <servlet-name>AddDonationServlet</servlet-name>
+    <servlet-class>controller.AddDonationServlet</servlet-class>
+  </servlet>
+  <servlet>
+  <description></description>
+    <display-name>SearchDonationServlet</display-name>
+    <servlet-name>SearchDonationServlet</servlet-name>
+    <servlet-class>controller.SearchDonationServlet</servlet-class>
+  </servlet>
+  <servlet>
+  <description></description>
+    <display-name>DeleteDonationServlet</display-name>
+    <servlet-name>DeleteDonationServlet</servlet-name>
+    <servlet-class>controller.DeleteDonationServlet</servlet-class>
+  </servlet>
 </web-app>
