@@ -81,4 +81,22 @@
     <servlet-name>UpdateDonorServlet</servlet-name>
     <servlet-class>controller.UpdateDonorServlet</servlet-class>
   </servlet>
+   <servlet>
+   <description></description>
+    <display-name>AddAdminServlet</display-name>
+    <servlet-name>AddAdminServlet</servlet-name>
+    <servlet-class>controller.AddAdminServlet</servlet-class>
+  </servlet>
+   <servlet>
+   <description></description>
+    <display-name>SearchAdminServlet</display-name>
+    <servlet-name>SearchAdminServlet</servlet-name>
+    <servlet-class>controller.SearchAdminServlet</servlet-class>
+  </servlet>
+  <servlet>
+  <description></description>
+    <display-name>DeleteAdminServlet</display-name>
+    <servlet-name>DeleteAdminServlet</servlet-name>
+    <servlet-class>controller.DeleteAdminServlet</servlet-class>
+  </servlet>
 </web-app>

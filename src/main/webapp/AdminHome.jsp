@@ -23,19 +23,22 @@
 	
 <div class="container mt-">
     <h2>Home</h2>
-    <a href="addCampaign.jsp" class="btn btn-primary">Add Campaign</a>
+    <a href="addCampaign.jsp" class="btn btn-warning" >Add Campaign</a>
 </div>
 <div class="container mt-5">
-   
-    <a href="<%= request.getServletContext().getContextPath()%>/AdminCampaignListServlet" class="btn btn-primary">Campaign List</a>
+    <a href="<%= request.getServletContext().getContextPath()%>/AdminCampaignListServlet" class="btn btn-warning">Campaign List</a>
 </div>
 <div class="container mt-5">
-   
-    <a href="AdminAddDonor.jsp" class="btn btn-primary">Add Donor</a>
+    <a href="AdminAddDonor.jsp" class="btn btn-danger">Add Donor</a>
 </div>
 <div class="container mt-5">
-   
-    <a href="AdminSearchDonor.jsp" class="btn btn-primary">Search Donor</a>
+    <a href="AdminSearchDonor.jsp" class="btn btn-danger">Search Donor</a>
+</div>
+<div class="container mt-5">
+    <a href="AddAdmin.jsp" class="btn btn-info">Add Admin</a>
+</div>
+<div class="container mt-5">
+    <a href="SearchAdmin.jsp" class="btn btn-info">Search Admin</a>
 </div>
 <!-- Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

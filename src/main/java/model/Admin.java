@@ -16,7 +16,15 @@ public class Admin {
         this.password = password;
     }
 
-    // Getters and Setters
+    public Admin(int id2, String firstName2, String lastName2, String username2) {
+    	 this.id = id2;
+         this.firstName = firstName2;
+         this.lastName = lastName2;
+         this.username = username2;
+        
+	}
+
+	// Getters and Setters
     public int getId() {
         return id;
     }
