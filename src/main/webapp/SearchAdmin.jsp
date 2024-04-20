@@ -7,7 +7,7 @@
 <title>Search User</title>
 <script type="text/javascript">
         function validateForm() {
-            var nic = document.getElementById("nic").value;
+            var nic = document.getElementById("username").value;
             var name = document.getElementById("name").value;
 
             // Check if at least one field is not empty
@@ -18,16 +18,16 @@
             return true;
         }
       
-        function confirmDelete(donorId) {
-        	var confirmed = confirm("Are you sure you want to delete this Donor?");
-            
-            if (confirmed) {
-                // Redirect to the delete servlet with the campaignId as a parameter
-                window.location.href = "DeleteDonorServlet?donorId=" + donorId;
+        function confirmDelete(id) {
+            var password = prompt("Please enter admin password:");
+            if (password !== null) { // Check if the user clicked Cancel
+                var confirmed = confirm("Are you sure you want to delete this Donor?");
+                if (confirmed) {
+                    // Redirect to the delete servlet with donorId and password as parameters
+                    window.location.href = "DeleteAdminServlet?adminId=" + id + "&password=" + encodeURIComponent(password);
+                }
             }
-            
         }
-        
  </script>
     
     
@@ -36,13 +36,15 @@
 </head>
 <body>
 <%@include file="navbar.jsp" %>
- <h2>Search User</h2>
  <div class="container mt-8">
-        <h1>User Search</h1>
-        <form action="<%= request.getServletContext().getContextPath()%>/SearchDonorServlet" method="get" class="form-inline" onsubmit="return validateForm()">
+ <h2>Search Admin users</h2>
+ </div>
+ <div class="container mt-8">
+        <h1>Admin user Search</h1>
+        <form action="<%= request.getServletContext().getContextPath()%>/SearchAdminServlet" method="get" class="form-inline" onsubmit="return validateForm()">
             <div class="form-group mr-2">
                 <label for="nic">NIC: </label>
-                <input type="text" class="form-control" id="nic" name="nic">
+                <input type="text" class="form-control" id="username" name="username">
             </div>
             <div class="form-group mr-2">
                 <label for="name">or Name: </label>
@@ -61,25 +63,23 @@
     <table class="table">
         <thead>
             <tr>
-                <th>NIC</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Username</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <%-- Iterate over campaignList using JSP forEach loop --%>
-            <c:forEach var="donor" items="${donors}">
+            <%-- Iterate over adminList using JSP forEach loop --%>
+            <c:forEach var="admin" items="${admins}">
                 <tr>
-                    <td>${donor.nic}</td>
-                    <td>${donor.firstName}</td>
-                    <td>${donor.lastName}</td>
+                    <td>${admin.firstName}</td>
+                    <td>${admin.lastName}</td>
+                    <td>${admin.username}</td>
                     <td>
-                        <!-- Update button -->
-                        <a href="<%= request.getServletContext().getContextPath()%>/GetDonorServlet?id=${donor.id}" class="btn btn-primary">Update</a>
-                        
+                       
                         <!-- Delete button -->
-                         <Button  class="btn btn-danger" onclick="confirmDelete(${donor.id})">Delete</Button>
+                         <Button  class="btn btn-danger" onclick="confirmDelete(${admin.id})">Delete</Button>
                        
                     </td>
                 </tr>
