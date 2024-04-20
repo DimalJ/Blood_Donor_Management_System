@@ -40,6 +40,13 @@
 <div class="container mt-5">
     <a href="SearchAdmin.jsp" class="btn btn-info">Search Admin</a>
 </div>
+<div class="container mt-5">
+    <a href="AddDonation.jsp" class="btn btn-dark">add Donation</a>
+</div>
+<div class="container mt-5">
+    <a href="SearchDonation.jsp" class="btn btn-dark">Search Donation</a>
+</div>
+
 <!-- Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
