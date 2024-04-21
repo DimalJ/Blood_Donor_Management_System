@@ -1,30 +1,29 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DonorCRUDDao;
-import model.Donor;
+import dao.CampaignListDao;
+import model.Campaign;
 
 /**
- * Servlet implementation class DonorPorfileServlet
+ * Servlet implementation class DonorAllCampaignsServlet
  */
-@WebServlet("/DonorProfileServlet")
-public class DonorProfileServlet extends HttpServlet {
+@WebServlet("/DonorAllCampaignsServlet")
+public class DonorAllCampaignsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    private DonorCRUDDao donorCRUDDao;
+	private CampaignListDao campaignListDao;   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DonorProfileServlet() {
-        this.donorCRUDDao = new DonorCRUDDao();
+    public DonorAllCampaignsServlet() {
+    	this.campaignListDao=new CampaignListDao();
         // TODO Auto-generated constructor stub
     }
 
@@ -32,13 +31,10 @@ public class DonorProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nic = (String) request.getSession().getAttribute("username");
-
-		Donor donor = donorCRUDDao.getDonorByNic(nic);
-        request.setAttribute("donor",donor);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("DonorProfile.jsp");
-        dispatcher.forward(request, response);
-        
+		ArrayList<Campaign> campaigns = campaignListDao.clearCampaigns();
+		campaigns=campaignListDao.getCampaignList();
+		request.setAttribute("campaigns", campaigns);
+        request.getRequestDispatcher("DonorAllCampaigns.jsp").forward(request, response);
 	}
 
 	/**

@@ -6,14 +6,34 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Profile</title>
+<link rel="icon" href="./images/blood.ico" type="image/x-icon">
 <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Style for the profile box */
+        .profile-box {
+            background-color: #f0f0f0; /* Lighter shade background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            text-align: center;
+            margin: 0 auto; /* Center align */
+            width: 50%; /* Adjust width as needed */
+        }
+    </style>
 </head>
 <body>
 <%@include file="DonorNavbar.jsp" %>
-
-  <h1>User Profile</h1>
+<div style="width: 900px;" class="mx-auto">
+	<nav class="nav nav-pills nav-fill">
+	  <a class="nav-item nav-link " href="<%= request.getServletContext().getContextPath()%>/DonorDonationListServlet">Donation History</a>
+	  <a class="nav-item nav-link active" href="<%= request.getServletContext().getContextPath()%>/DonorProfileServlet">Profile</a>
+	  <a class="nav-item nav-link" href="<%= request.getServletContext().getContextPath()%>/DonorCampaignListServlet">Campaign List</a>
+	</nav>
+</div>
+<div class="profile-box">
+  <h1>Donor Profile</h1>
     <%
     // Retrieve the Donor object from the request attribute
     Donor donor = (Donor) request.getAttribute("donor");
@@ -22,9 +42,13 @@
     if (donor != null) {
 %>
     <div>
-        <p><strong>First Name:</strong> <%= donor.getFirstName() %></p>
-        <p><strong>Last Name:</strong> <%= donor.getLastName() %></p>
-        <!-- Add more details as needed -->
+        <p><strong>Name:</strong> <%= donor.getFirstName() %> <%= donor.getLastName() %></p>
+        <p><strong>Birthday:</strong> <%= donor.getBirthday() %></p>
+        <p><strong>City:</strong> <%= donor.getCity() %></p>
+        <p><strong>Blood Type:</strong> <%= donor.getBloodType() %></p>
+        <p><strong>Email:</strong> <%= donor.getEmail() %></p>
+        <p><strong>NIC:</strong> <%= donor.getNic() %></p>
+        <p><strong>Mobile:</strong> <%= donor.getMobile() %></p>
     </div>
 <%
     } else {
@@ -32,7 +56,7 @@
         out.println("Donor details not found.");
     }
 %>
-    
+ </div>   
  <!-- Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

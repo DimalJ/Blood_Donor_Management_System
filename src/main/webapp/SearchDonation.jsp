@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Search Donations</title>
+<link rel="icon" href="./images/blood.ico" type="image/x-icon">
 <script type="text/javascript">
         function validateForm() {
             var nic = document.getElementById("bloodType").value;

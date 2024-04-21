@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Error Page</title>
+    <link rel="icon" href="./images/blood.ico" type="image/x-icon">
 </head>
 <body>
     <h1>Error</h1>

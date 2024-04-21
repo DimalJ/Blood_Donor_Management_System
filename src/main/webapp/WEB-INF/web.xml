@@ -129,4 +129,16 @@
     <servlet-name>DonorPorfileServlet</servlet-name>
     <servlet-class>controller.DonorPorfileServlet</servlet-class>
   </servlet>
+  <servlet>
+  <description></description>
+    <display-name>DonorCampaignListServlet</display-name>
+    <servlet-name>DonorCampaignListServlet</servlet-name>
+    <servlet-class>controller.DonorCampaignListServlet</servlet-class>
+  </servlet>
+  <servlet>
+  <description></description>
+    <display-name>DonorAllCampaignsServlet</display-name>
+    <servlet-name>DonorAllCampaignsServlet</servlet-name>
+    <servlet-class>controller.DonorAllCampaignsServlet</servlet-class>
+  </servlet>
 </web-app>

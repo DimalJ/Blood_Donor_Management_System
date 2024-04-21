@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 
 <title>Donor Home</title>
-<link rel="icon" href="./images/icon.ico" type="image/x-icon">
+<link rel="icon" href="./images/blood.ico" type="image/x-icon">
 <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript">
@@ -31,7 +31,13 @@
 </head>
 <body>
 <%@include file="DonorNavbar.jsp" %>
-
+<div style="width: 900px;" class="mx-auto">
+	<nav class="nav nav-pills nav-fill">
+	  <a class="nav-item nav-link active" href="<%= request.getServletContext().getContextPath()%>/DonorDonationListServlet">Donation History</a>
+	  <a class="nav-item nav-link" href="<%= request.getServletContext().getContextPath()%>/DonorProfileServlet">Profile</a>
+	  <a class="nav-item nav-link" href="<%= request.getServletContext().getContextPath()%>/DonorCampaignListServlet">Campaign List</a>
+	</nav>
+</div>
   <br> <br> 
   	<div class="container">
   	${Message}

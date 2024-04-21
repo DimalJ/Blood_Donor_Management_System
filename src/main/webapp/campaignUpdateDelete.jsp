@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Campaign List</title>
+    <link rel="icon" href="./images/blood.ico" type="image/x-icon">
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script type="text/javascript">
