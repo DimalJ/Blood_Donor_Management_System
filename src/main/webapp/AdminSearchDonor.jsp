@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Search User</title>
+<link rel="icon" href="./images/blood.ico" type="image/x-icon">
 <script type="text/javascript">
         function validateForm() {
             var nic = document.getElementById("nic").value;

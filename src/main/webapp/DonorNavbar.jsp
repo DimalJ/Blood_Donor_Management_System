@@ -23,13 +23,7 @@
 <br>
 <br>
 <br>
-<div style="width: 900px;" class="mx-auto">
-	<nav class="nav nav-pills nav-fill">
-	  <a class="nav-item nav-link active" href="<%= request.getServletContext().getContextPath()%>/DonorDonationListServlet">Donation History</a>
-	  <a class="nav-item nav-link" href="<%= request.getServletContext().getContextPath()%>/DonorProfileServlet">Profile</a>
-	  <a class="nav-item nav-link" href="#">Campaign List</a>
-	</nav>
-</div>
+
 <script type="text/javascript">
     function confirmLogout() {
         if (confirm("Are you sure you want to logout?")) {
