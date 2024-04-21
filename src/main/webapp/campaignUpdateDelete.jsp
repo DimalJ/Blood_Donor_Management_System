@@ -19,14 +19,23 @@
     }
     
 </script>
+<style>
+        /* Custom CSS for alternating row colors */
+        .table-striped-custom tbody tr:nth-of-type(odd) {
+            background-color: #f2f2f2;
+        }
+        .table td, .table th {
+            text-align: center;
+            vertical-align: middle !important;
+    </style>
 </head>
 <body>
 <%@include file="navbar.jsp" %>
 	${Message}
 <div class="container">
     <h2>Campaign List</h2>
-    <table class="table">
-        <thead>
+    <table class="table table-striped table-bordered table-striped-custom">
+        <thead class="thead-light">
             <tr>
             	<th>Id</th>
                 <th>Date</th>

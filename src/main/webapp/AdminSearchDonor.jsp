@@ -33,6 +33,15 @@
     
  <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+        /* Custom CSS for alternating row colors */
+        .table-striped-custom tbody tr:nth-of-type(odd) {
+            background-color: #f2f2f2;
+        }
+        .table td, .table th {
+            text-align: center;
+            vertical-align: middle !important;
+    </style>
 </head>
 <body>
 <%@include file="navbar.jsp" %>
@@ -58,8 +67,8 @@
   	<br>
   <div class="container">
     <h2>User List</h2>
-    <table class="table">
-        <thead>
+    <table class="table table-striped table-bordered table-striped-custom">
+        <thead class="thead-light">
             <tr>
                 <th>NIC</th>
                 <th>First Name</th>

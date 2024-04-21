@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="model.Admin" %>
+<%@ page import="model.Donor" %>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  <a class="navbar-brand" href="AdminHome.jsp">Sri Lankan National Blood Transfusion Service</a>
+  <a class="navbar-brand" href="<%= request.getServletContext().getContextPath()%>/DonorDonationListServlet">Sri Lankan National Blood Transfusion Service</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -20,6 +20,16 @@
     </ul>
   </div>
 </nav>
+<br>
+<br>
+<br>
+<div style="width: 900px;" class="mx-auto">
+	<nav class="nav nav-pills nav-fill">
+	  <a class="nav-item nav-link active" href="<%= request.getServletContext().getContextPath()%>/DonorDonationListServlet">Donation History</a>
+	  <a class="nav-item nav-link" href="<%= request.getServletContext().getContextPath()%>/DonorProfileServlet">Profile</a>
+	  <a class="nav-item nav-link" href="#">Campaign List</a>
+	</nav>
+</div>
 <script type="text/javascript">
     function confirmLogout() {
         if (confirm("Are you sure you want to logout?")) {

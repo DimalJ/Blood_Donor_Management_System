@@ -14,6 +14,7 @@ public class DonorCRUDDao {
 	private static final String searchName = "SELECT id, NIC, firstName, lastName FROM donors WHERE firstName LIKE ? OR lastName LIKE ?";
 	private static final String deleteDonor = "DELETE FROM donors WHERE id = ?";
 	private static final String getDonor = "SELECT * FROM donors WHERE id = ?";
+	private static final String DonorByNic = "SELECT * FROM donors WHERE NIC = ?";
 	private static final String updateDonor = "UPDATE donors SET firstName= ?, lastName= ?, city= ?, birthday= ?, bloodType= ?, email= ?, NIC= ?, password= ?, mobile= ? WHERE id = ?";
 	private  ArrayList<Donor> donors = new ArrayList<Donor>();
 	private Donor donor;
@@ -25,6 +26,47 @@ public ArrayList<Donor> clearDonors() {
 	
 	return donors;
  }
+public Donor getDonorByNic(String nic) {
+    
+    try (
+    		Connection conn = DbConnection.getConnection();
+  			PreparedStatement ps = conn.prepareStatement(DonorByNic);
+    	){	
+	        	
+	        	ps.setString(1, nic);
+	        	
+	            
+            ResultSet resultSet = ps.executeQuery(); {
+            if (resultSet.next()) {
+            	int donorId = resultSet.getInt("id");
+            	String firstName = resultSet.getString("firstName");
+                String lastName = resultSet.getString("lastName");
+                String city = resultSet.getString("city");
+                String birthday = resultSet.getString("birthday");
+                String bloodType = resultSet.getString("bloodType");
+                String email = resultSet.getString("email");
+                String NIC = resultSet.getString("NIC");
+                String password = resultSet.getString("password");
+                String mobile = resultSet.getString("mobile");
+                
+                
+                donor = new Donor(donorId, firstName, lastName, city, birthday,bloodType,email,NIC,password,mobile);
+                
+                
+            }else {
+            	donors=null;
+            }
+            }
+            conn.close();
+            ps.close();
+            resultSet.close();
+    	 }catch (SQLException e) {
+             e.printStackTrace();
+         }
+        
+    
+    return donor;
+}
 public boolean updateCampaign(int id, String firstName, String lastName, String city, String birthday, String bloodType, String email, String nic, String password, String mobile) {
     boolean isSuccess = false;
     try (
