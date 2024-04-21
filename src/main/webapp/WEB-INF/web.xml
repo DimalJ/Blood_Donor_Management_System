@@ -117,4 +117,16 @@
     <servlet-name>DeleteDonationServlet</servlet-name>
     <servlet-class>controller.DeleteDonationServlet</servlet-class>
   </servlet>
+   <servlet>
+  <description></description>
+    <display-name>DonorDonationListServlet</display-name>
+    <servlet-name>DonorDonationListServlet</servlet-name>
+    <servlet-class>controller.DonorDonationListServlet</servlet-class>
+  </servlet>
+  <servlet>
+  <description></description>
+    <display-name>DonorPorfileServlet</display-name>
+    <servlet-name>DonorPorfileServlet</servlet-name>
+    <servlet-class>controller.DonorPorfileServlet</servlet-class>
+  </servlet>
 </web-app>

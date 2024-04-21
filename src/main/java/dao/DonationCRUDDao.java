@@ -17,7 +17,39 @@ public class DonationCRUDDao {
 	private static final String insertDonation = "INSERT INTO donations (nic, date, city, bloodType) VALUES (?, ?, ?, ?)";
 	private static final String searchDonation = "SELECT * FROM donations WHERE bloodtype = ? ORDER BY city, date DESC ";
 	private static final String deleteDonation = "DELETE FROM donations WHERE id = ?";
+	private static final String donationByDonor = "SELECT * FROM donations WHERE nic = ? ORDER BY city, date DESC ";
+	
 	private ArrayList<Donation> donationList = new ArrayList<Donation>();
+	
+	public ArrayList<Donation> donationsByDonor(String username) {
+		 try {
+			
+			 Connection conn = DbConnection.getConnection();
+			 PreparedStatement preparedStatement = conn.prepareStatement(donationByDonor);
+			 preparedStatement.setString(1, username);
+			 ResultSet resultSet = preparedStatement.executeQuery();
+
+			 while (resultSet.next()) {
+				 int id = resultSet.getInt("id");
+				 String nic = resultSet.getString("nic");
+			     Date date = resultSet.getDate("date");
+			     String city = resultSet.getString("city");
+			     String bloodType = resultSet.getString("bloodType");
+
+			     donationList.add(new Donation(id,nic,date,city,bloodType));
+			 }
+
+			 // Close resources
+			 resultSet.close();
+			 preparedStatement.close();
+			 conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+   
+	     return donationList;
+	 }
 	
 	public ArrayList<Donation> clearDonations() {
 		if(donationList!= null) {

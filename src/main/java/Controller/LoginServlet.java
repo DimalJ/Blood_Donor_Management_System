@@ -38,11 +38,11 @@ public class LoginServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("firstName", firstName);
-		
+		session.setAttribute("username", username);
 		
 		if (user=="Donor") {
-			 request.setAttribute("Message", "Login successful.");
-             RequestDispatcher dispatcher = request.getRequestDispatcher("DonorHome.jsp");
+			 request.setAttribute("nic", username);
+             RequestDispatcher dispatcher = request.getRequestDispatcher("DonorDonationListServlet");
              dispatcher.forward(request, response);
 		}else if(user=="Admin"){
 			 request.setAttribute("Message", "Login successful.");
