@@ -8,6 +8,19 @@
     <link rel="icon" href="./images/blood.ico" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+   <style type="text/css">
+    .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button-container button {
+            width: 150px; 
+            margin-right: 10px;
+        }
+   </style>
+  
    <script>
         // Function to validate password match
         function validatePassword() {
@@ -79,7 +92,10 @@
                 <label for="mobile">Mobile</label>
                 <input type="text" class="form-control" id="mobile" name="mobile" value="${donor.mobile}"required>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <div class="button-container">
+            	<button type="submit" class="btn btn-primary">Update</button>
+             	<button type="button" onclick="goBack()">Cancel</button>
+             </div>
         </form>
     </div>
   <!-- jQuery -->
@@ -87,7 +103,7 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // Add event listener to the birthday input field
+        
         document.getElementById('birthday').addEventListener('change', function() {
             var birthdayInput = this.value;
             var today = new Date();
@@ -104,6 +120,11 @@
                 document.getElementById("birthdayError").innerText = "";
             }
         });
+        
+        function goBack() {
+            window.history.back();
+        }
     </script>
+    <br><br><br><br><br>
 </body>
 </html>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.DonorCRUDDao;
+import dao.LoginDao;
 
 /**
  * Servlet implementation class UpdateDonorServlet
@@ -17,12 +18,14 @@ import dao.DonorCRUDDao;
 @WebServlet("/UpdateDonorServlet")
 public class UpdateDonorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private DonorCRUDDao donorCRUDDao;   
+    private DonorCRUDDao donorCRUDDao; 
+    private LoginDao loginDao;  
     /**
      * @see HttpServlet#HttpServlet()
      */
     public UpdateDonorServlet() {
         this.donorCRUDDao = new DonorCRUDDao();
+        this.loginDao=new LoginDao();
         // TODO Auto-generated constructor stub
     }
 
@@ -44,14 +47,23 @@ public class UpdateDonorServlet extends HttpServlet {
         
         boolean isUpdate= donorCRUDDao.updateCampaign(id, firstName, lastName, city, birthday, bloodType, email, nic, password, mobile);
         if(isUpdate) {
-        	request.setAttribute("Message", "user Updated.");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("AdminHome.jsp");
-            dispatcher.forward(request, response);
+        	request.setAttribute("Message", "User Updated.");
+            
         }else {
-        	request.setAttribute("Message", "user Not Updated.");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("AdminHome.jsp");
-            dispatcher.forward(request, response);
+        	request.setAttribute("Message", "User Not Updated.");
+            
         }
+        String username= (String) request.getSession().getAttribute("username");
+        String user=loginDao.authenticateUser(username, password);
+        if (user=="Donor") {
+			 
+			 	RequestDispatcher dispatcher = request.getRequestDispatcher("DonorDonationListServlet");
+	            dispatcher.forward(request, response);
+		}else {
+			 
+			 RequestDispatcher dispatcher = request.getRequestDispatcher("AdminHome.jsp");
+	         dispatcher.forward(request, response);
+            }
 	}
 
 	/**

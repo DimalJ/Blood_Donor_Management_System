@@ -8,6 +8,7 @@
     <link rel="icon" href="./images/blood.ico" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
    <script>
         // Function to validate password match
         function validatePassword() {
@@ -23,6 +24,7 @@
     </script>
 </head>
 <body>
+<%@include file="navbar.jsp" %>
 
     <div class="container">
         <h1 class="mt-5 mb-3">Add Admin User</h1>
@@ -47,9 +49,9 @@
 		        <label for="confirmPassword">Confirm Password:</label>
 		        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
        		</div>
-       		<div>
+       		<br>
        		<button type="submit" class="btn btn-primary">Register</button>
-       		</div>
+       		
         </form>
     </div>
  

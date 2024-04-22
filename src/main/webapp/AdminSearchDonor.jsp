@@ -34,6 +34,7 @@
     
  <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
 <style>
         /* Custom CSS for alternating row colors */
         .table-striped-custom tbody tr:nth-of-type(odd) {
@@ -46,7 +47,8 @@
 </head>
 <body>
 <%@include file="navbar.jsp" %>
- <h2>Search User</h2>
+ <br>
+ <br>
  <div class="container mt-8">
         <h1>User Search</h1>
         <form action="<%= request.getServletContext().getContextPath()%>/SearchDonorServlet" method="get" class="form-inline" onsubmit="return validateForm()">

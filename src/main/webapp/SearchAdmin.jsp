@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Search User</title>
 <link rel="icon" href="./images/blood.ico" type="image/x-icon">
+<link rel="stylesheet" href="./css/style.css">
 <script type="text/javascript">
         function validateForm() {
             var nic = document.getElementById("username").value;
