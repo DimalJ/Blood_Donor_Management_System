@@ -10,18 +10,23 @@
 <link rel="icon" href="./images/blood.ico" type="image/x-icon">
 <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
     <style>
         /* Style for the profile box */
         .profile-box {
-            background-color: #f0f0f0; /* Lighter shade background */
+            background-color: #f0f0f0;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin: 0 auto; /* Center align */
-            width: 50%; /* Adjust width as needed */
+            margin: 0 auto; 
+            width: 50%;
         }
-    </style>
+        .button-container {
+		  text-align: right; /* Align the content to the right */
+		  margin-top: 10px; /* Add some top margin for spacing */
+		}
+    </style> 	
 </head>
 <body>
 <%@include file="DonorNavbar.jsp" %>
@@ -56,7 +61,18 @@
         out.println("Donor details not found.");
     }
 %>
+ 	<div class="button-container">
+		 <a href="<%= request.getServletContext().getContextPath()%>/GetDonorServlet?id=${donor.getId()}">
+		 <button type="button" class="btn btn-lg btn-primary">Update Profile </button></a>
+		
+ 	</div>
  </div>   
+ <script>
+        // JavaScript function to navigate back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+  </script>
  <!-- Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

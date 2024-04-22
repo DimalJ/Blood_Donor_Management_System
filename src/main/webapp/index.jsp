@@ -10,6 +10,7 @@
     <title>Blood Donor Management</title>
     <link rel="icon" href="./images/blood.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <style>
         /* Custom CSS for alternating row colors */
         .table-striped-custom tbody tr:nth-of-type(odd) {
@@ -42,7 +43,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2 class="text-center">Welcome to Blood Donor Management System</h2>
-                <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fringilla ligula sed mi consectetur.</p>
+                <p class="lead text-center">"Every drop counts! Join us in saving lives. Donate blood today."</p>
             </div>
         </div>
     </div>

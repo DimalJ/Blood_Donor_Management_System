@@ -7,6 +7,7 @@
 <title>Blood Donation</title>
 <link rel="icon" href="./images/blood.ico" type="image/x-icon">
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 <%@include file="navbar.jsp" %>
