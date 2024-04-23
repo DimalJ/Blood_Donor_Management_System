@@ -84,7 +84,7 @@
             <%-- Iterate over adminList using JSP forEach loop --%>
             <c:forEach var="donation" items="${donations}">
                 <tr>
-                   <td> <a href="DonorHome.jsp">${donation.nic}</a></td>
+                   <td> <a href="<%= request.getServletContext().getContextPath()%>/AdminDonorProfileServlet?nic=${donation.nic}">${donation.nic}</a></td>
                     <td>${donation.date}</td>
                     <td>${donation.city}</td>
                     <td>${donation.bloodType}</td>

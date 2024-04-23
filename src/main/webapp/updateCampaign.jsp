@@ -12,8 +12,9 @@
 </head>
 <body>
 <%@include file="navbar.jsp" %>
- <h2>Update Campaign</h2>
+ 
  <div class="container mt-5">
+ 	<h2>Update Campaign</h2>
     <form action="<%= request.getServletContext().getContextPath()%>/UpdateCampaignServlet" method="post">
         <input type="hidden" name="id" value="${param.id}">
          <div class="form-group">

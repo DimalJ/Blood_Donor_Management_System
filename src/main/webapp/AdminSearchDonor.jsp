@@ -83,7 +83,7 @@
             <%-- Iterate over campaignList using JSP forEach loop --%>
             <c:forEach var="donor" items="${donors}">
                 <tr>
-                    <td>${donor.nic}</td>
+                    <td><a href="<%= request.getServletContext().getContextPath()%>/AdminDonorDonationListServlet?nic=${donor.nic}">${donor.nic}</a></td>
                     <td>${donor.firstName}</td>
                     <td>${donor.lastName}</td>
                     <td>

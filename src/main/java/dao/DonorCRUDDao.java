@@ -15,6 +15,7 @@ public class DonorCRUDDao {
 	private static final String deleteDonor = "DELETE FROM donors WHERE id = ?";
 	private static final String getDonor = "SELECT * FROM donors WHERE id = ?";
 	private static final String DonorByNic = "SELECT * FROM donors WHERE NIC = ?";
+	
 	private static final String updateDonor = "UPDATE donors SET firstName= ?, lastName= ?, city= ?, birthday= ?, bloodType= ?, email= ?, NIC= ?, password= ?, mobile= ? WHERE id = ?";
 	private  ArrayList<Donor> donors = new ArrayList<Donor>();
 	private Donor donor;

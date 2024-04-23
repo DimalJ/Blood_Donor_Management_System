@@ -33,7 +33,7 @@ public class GetDonorServlet extends HttpServlet {
 		int  id = Integer.parseInt(strId);
 		Donor donor= donorCRUDDao.getDonor(id);
 		request.setAttribute("donor", donor);
-        request.getRequestDispatcher("updateDonor.jsp").forward(request, response);
+        request.getRequestDispatcher("UpdateDonorDetails.jsp").forward(request, response);
 		
 	}
 

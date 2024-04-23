@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Donor Home</title>
+<title>Donation History</title>
 <link rel="icon" href="./images/blood.ico" type="image/x-icon">
 <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -33,14 +33,8 @@
     </style>
 </head>
 <body>
-<%@include file="DonorNavbar.jsp" %>
-<div style="width: 900px;" class="mx-auto">
-	<nav class="nav nav-pills nav-fill">
-	  <a class="nav-item nav-link active" href="<%= request.getServletContext().getContextPath()%>/DonorDonationListServlet">Donation History</a>
-	  <a class="nav-item nav-link" href="<%= request.getServletContext().getContextPath()%>/DonorProfileServlet">Profile</a>
-	  <a class="nav-item nav-link" href="<%= request.getServletContext().getContextPath()%>/DonorCampaignListServlet">Campaign List</a>
-	</nav>
-</div>
+<%@include file="navbar.jsp" %>
+
   <br> <br> 
   	<div class="container">
   	${Message}
@@ -51,6 +45,7 @@
     <table class="table table-striped table-bordered table-striped-custom">
         <thead class="thead-light">
             <tr>
+            	<th class=>NIC</th>
                 <th class="mx-auto">Date</th>
                 <th>City</th>
                 <th>BloodType</th>
@@ -60,6 +55,7 @@
             <%-- Iterate over adminList using JSP forEach loop --%>
             <c:forEach var="donation" items="${donations}">
                 <tr>
+                	<td>${donation.nic}</td>
                     <td>${donation.date}</td>
                     <td>${donation.city}</td>
                     <td>${donation.bloodType}</td>

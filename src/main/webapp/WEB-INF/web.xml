@@ -141,4 +141,17 @@
     <servlet-name>DonorAllCampaignsServlet</servlet-name>
     <servlet-class>controller.DonorAllCampaignsServlet</servlet-class>
   </servlet>
+  <servlet>
+  <description></description>
+    <display-name>AdminDonorProfileServlet</display-name>
+    <servlet-name>AdminDonorProfileServlet</servlet-name>
+    <servlet-class>controller.AdminDonorProfileServlet</servlet-class>
+  </servlet>
+  <servlet>
+  <description></description>
+    <display-name>AdminDonorDonationListServlet</display-name>
+    <servlet-name>AdminDonorDonationListServlet</servlet-name>
+    <servlet-class>controller.AdminDonorDonationListServlet</servlet-class>
+  </servlet>
+  
 </web-app>

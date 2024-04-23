@@ -33,6 +33,26 @@
             }
             return true;
         }
+        document.getElementById('birthday').addEventListener('change', function() {
+            var birthdayInput = this.value;
+            var today = new Date();
+            var birthday = new Date(birthdayInput);
+            var age = today.getFullYear() - birthday.getFullYear();
+            var m = today.getMonth() - birthday.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
+                age--;
+            }
+            if (age < 18) {
+                document.getElementById("birthdayError").innerText = "You must be 18 years or older to register.";
+                this.value = "";
+            } else {
+                document.getElementById("birthdayError").innerText = "";
+            }
+        });
+        
+        function goBack() {
+            window.history.back();
+        }
     </script>
 </head>
 <body>
@@ -84,18 +104,16 @@
 	            <label for="password">Password:</label>
 	        	<input type="password" class="form-control" id="password" name="password" value="${donor.password}"required>
 			</div>
-			<div>
+			<div class="form-group">
 		        <label for="confirmPassword">Confirm Password:</label>
 		        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" value="${donor.password}"required>
+		         <p> check</p>
        		</div>
-            <div class="form-group">
-                <label for="mobile">Mobile</label>
-                <input type="text" class="form-control" id="mobile" name="mobile" value="${donor.mobile}"required>
-            </div>
-            <div class="button-container">
+       		<div class="button-container">
             	<button type="submit" class="btn btn-primary">Update</button>
              	<button type="button" onclick="goBack()">Cancel</button>
              </div>
+           
         </form>
     </div>
     <p> check</p>
@@ -103,29 +121,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        
-        document.getElementById('birthday').addEventListener('change', function() {
-            var birthdayInput = this.value;
-            var today = new Date();
-            var birthday = new Date(birthdayInput);
-            var age = today.getFullYear() - birthday.getFullYear();
-            var m = today.getMonth() - birthday.getMonth();
-            if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
-                age--;
-            }
-            if (age < 18) {
-                document.getElementById("birthdayError").innerText = "You must be 18 years or older to register.";
-                this.value = "";
-            } else {
-                document.getElementById("birthdayError").innerText = "";
-            }
-        });
-        
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-    <br><br><br><br><br>
+   
+    <br><br><br>
 </body>
 </html>

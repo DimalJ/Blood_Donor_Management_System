@@ -18,7 +18,6 @@ public class DonationCRUDDao {
 	private static final String searchDonation = "SELECT * FROM donations WHERE bloodtype = ? ORDER BY city, date DESC ";
 	private static final String deleteDonation = "DELETE FROM donations WHERE id = ?";
 	private static final String donationByDonor = "SELECT * FROM donations WHERE nic = ? ORDER BY city, date DESC ";
-	
 	private ArrayList<Donation> donationList = new ArrayList<Donation>();
 	
 	public ArrayList<Donation> donationsByDonor(String username) {
@@ -94,7 +93,7 @@ public class DonationCRUDDao {
 			 preparedStatement.close();
 			 conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     
