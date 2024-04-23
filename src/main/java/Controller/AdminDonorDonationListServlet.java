@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,24 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DonorCRUDDao;
-import model.Donor;
+import dao.DonationCRUDDao;
+import model.Donation;
 
 /**
- * Servlet implementation class DonorPorfileServlet
+ * Servlet implementation class AdminDonorDonationListServlet
  */
-@WebServlet("/DonorProfileServlet")
-public class DonorProfileServlet extends HttpServlet {
+@WebServlet("/AdminDonorDonationListServlet")
+public class AdminDonorDonationListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    private DonorCRUDDao donorCRUDDao;
-    
+	 private DonationCRUDDao donationCRUDDao;      
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DonorProfileServlet() {
-        this.donorCRUDDao = new DonorCRUDDao();
-        
+    public AdminDonorDonationListServlet() {
+    	this.donationCRUDDao = new DonationCRUDDao();
         // TODO Auto-generated constructor stub
     }
 
@@ -34,15 +32,21 @@ public class DonorProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nic = (String) request.getSession().getAttribute("username");
+		String nic = request.getParameter("nic");
 		
-		Donor donor = donorCRUDDao.getDonorByNic(nic);
-        request.setAttribute("donor",donor);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("DonorProfile.jsp");
-        dispatcher.forward(request, response);
-        
-       
-        
+		ArrayList<Donation> donationList= donationCRUDDao.clearDonations();
+		donationList= donationCRUDDao.donationsByDonor(nic);
+		
+			
+			if(donationList==null) {
+				request.setAttribute("Message", "No records Found.");
+	            RequestDispatcher dispatcher = request.getRequestDispatcher("AdminDonorDonation.jsp");
+	            dispatcher.forward(request, response);
+				
+			}else {
+				request.setAttribute("donations", donationList);
+		        request.getRequestDispatcher("AdminDonorDonation.jsp").forward(request, response);
+			}
 	}
 
 	/**

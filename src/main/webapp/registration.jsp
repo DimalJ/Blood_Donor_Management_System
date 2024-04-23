@@ -8,7 +8,7 @@
     <link rel="icon" href="./images/blood.ico" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+     <link rel="stylesheet" href="./css/style.css"> 
    <script>
         // Function to validate password match
         function validatePassword() {

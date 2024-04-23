@@ -22,21 +22,14 @@
             margin: 0 auto; 
             width: 50%;
         }
-        .button-container {
-		  text-align: right; /* Align the content to the right */
-		  margin-top: 10px; /* Add some top margin for spacing */
-		}
+       
     </style> 	
 </head>
 <body>
-<%@include file="DonorNavbar.jsp" %>
-<div style="width: 900px;" class="mx-auto">
-	<nav class="nav nav-pills nav-fill">
-	  <a class="nav-item nav-link " href="<%= request.getServletContext().getContextPath()%>/DonorDonationListServlet">Donation History</a>
-	  <a class="nav-item nav-link active" href="<%= request.getServletContext().getContextPath()%>/DonorProfileServlet">Profile</a>
-	  <a class="nav-item nav-link" href="<%= request.getServletContext().getContextPath()%>/DonorCampaignListServlet">Campaign List</a>
-	</nav>
-</div>
+<%@include file="navbar.jsp" %>
+
+<br>
+<br>
 <div class="profile-box">
   <h1>Donor Profile</h1>
     <%
@@ -61,19 +54,8 @@
         out.println("Donor details not found.");
     }
 %>
- 	<div class="button-container">
-		 <a href="<%= request.getServletContext().getContextPath()%>/GetDonorServlet?id=${donor.getId()}">
-		 <button type="button" class="btn btn-lg btn-primary">Update Profile </button></a>
-		
- 	</div>
  </div>   
 
- <script>
-        // JavaScript function to navigate back to the previous page
-        function goBack() {
-            window.history.back();
-        }
-  </script>
  <!-- Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

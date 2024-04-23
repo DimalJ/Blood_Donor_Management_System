@@ -13,20 +13,17 @@ import dao.DonorCRUDDao;
 import model.Donor;
 
 /**
- * Servlet implementation class DonorPorfileServlet
+ * Servlet implementation class AdminDonorProfileServlet
  */
-@WebServlet("/DonorProfileServlet")
-public class DonorProfileServlet extends HttpServlet {
+@WebServlet("/AdminDonorProfileServlet")
+public class AdminDonorProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    private DonorCRUDDao donorCRUDDao;
-    
+	 private DonorCRUDDao donorCRUDDao;   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DonorProfileServlet() {
-        this.donorCRUDDao = new DonorCRUDDao();
-        
+    public AdminDonorProfileServlet() {
+    	this.donorCRUDDao = new DonorCRUDDao();
         // TODO Auto-generated constructor stub
     }
 
@@ -34,15 +31,12 @@ public class DonorProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nic = (String) request.getSession().getAttribute("username");
+		String nic =  request.getParameter("nic");
 		
 		Donor donor = donorCRUDDao.getDonorByNic(nic);
         request.setAttribute("donor",donor);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("DonorProfile.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("AdminDonorProfile.jsp");
         dispatcher.forward(request, response);
-        
-       
-        
 	}
 
 	/**

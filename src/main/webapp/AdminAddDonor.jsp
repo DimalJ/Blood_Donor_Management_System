@@ -24,7 +24,7 @@
     </script>
 </head>
 <body>
-
+<%@include file="navbar.jsp" %>
     <div class="container">
         <h1 class="mt-5 mb-3">Add Donor</h1>
         <form action="<%= request.getServletContext().getContextPath()%>/DonorRegisterServlet" method="POST">
