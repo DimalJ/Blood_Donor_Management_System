@@ -10,16 +10,18 @@ import model.Donor;
 public class DonorCRUDDao {
 	private static final String INSERT_DONOR_SQL = "INSERT INTO donors (firstName, lastName, city, birthday, bloodType, email, NIC, password, mobile) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String CHECK_NIC_SQL = "SELECT COUNT(*) AS count FROM donors WHERE NIC = ?";
-	private static final String searchId = "SELECT NIC, firstName, lastName FROM donors WHERE NIC = ?";
+	private static final String searchId = "SELECT id,NIC, firstName, lastName FROM donors WHERE NIC = ?";
 	private static final String searchName = "SELECT id, NIC, firstName, lastName FROM donors WHERE firstName LIKE ? OR lastName LIKE ?";
 	private static final String deleteDonor = "DELETE FROM donors WHERE id = ?";
 	private static final String getDonor = "SELECT * FROM donors WHERE id = ?";
 	private static final String DonorByNic = "SELECT * FROM donors WHERE NIC = ?";
+	private static final String login = "SELECT password FROM donors WHERE NIC = ?";
+	
 	
 	private static final String updateDonor = "UPDATE donors SET firstName= ?, lastName= ?, city= ?, birthday= ?, bloodType= ?, email= ?, NIC= ?, password= ?, mobile= ? WHERE id = ?";
 	private  ArrayList<Donor> donors = new ArrayList<Donor>();
 	private Donor donor;
-	
+	private String password;
 public ArrayList<Donor> clearDonors() {
 	if(donors!= null) {
 		donors.clear();
@@ -27,6 +29,35 @@ public ArrayList<Donor> clearDonors() {
 	
 	return donors;
  }
+public String getPassword(String nic) {
+	 
+	
+	try (
+	    		Connection conn = DbConnection.getConnection();
+	  			PreparedStatement ps = conn.prepareStatement(login);
+	    	){	
+		        	
+		        	ps.setString(1, nic);
+		        	
+		            
+	            ResultSet resultSet = ps.executeQuery(); {
+	            if (resultSet.next()) {
+	            	password = resultSet.getString("password");
+	             
+	            }else {
+	            	password="";
+	            }
+	            }
+	            conn.close();
+	            ps.close();
+	            resultSet.close();
+	    	 }catch (SQLException e) {
+	             e.printStackTrace();
+	         }
+	        
+	    
+	    return password;
+}
 public Donor getDonorByNic(String nic) {
     
     try (

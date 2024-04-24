@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <style>
-        /* Custom CSS for alternating row colors */
         .table-striped-custom tbody tr:nth-of-type(odd) {
             background-color: #f2f2f2;
         }
@@ -72,6 +71,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- 
+ <footer>
+    <div class="container">
+        <p>Sri Lankan National Blood Transfusion Service</p>
+        <p>&copy; DimalJay. All rights reserved.</p>
+    </div>
+</footer>
 </body>
 </html>

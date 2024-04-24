@@ -5,29 +5,48 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginDao {
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
+public class LoginDao {
+	PasswordHashDao ph;
 	private String user,firstName;
     // Method to authenticate user
     public String authenticateUser(String username, String password) {
         try (
         	Connection conn = DbConnection.getConnection();
-            PreparedStatement donorStatement = conn.prepareStatement("SELECT * FROM donors WHERE NIC = ? AND password = ?");
-            PreparedStatement adminStatement = conn.prepareStatement("SELECT * FROM admin WHERE username = ? AND password =? ")
+            PreparedStatement donorStatement = conn.prepareStatement("SELECT * FROM donors WHERE NIC = ?");
+            PreparedStatement adminStatement = conn.prepareStatement("SELECT * FROM admin WHERE username = ?")
         ) {
             // Check in donor table
             donorStatement.setString(1, username);
-            donorStatement.setString(2, password);
+            
             ResultSet donorResult = donorStatement.executeQuery();
             adminStatement.setString(1, username);
-            adminStatement.setString(2, password);
+           
             ResultSet adminResult = adminStatement.executeQuery();
             if (donorResult.next()) {
-            	
-                user = "Donor"; // Return "Donor" if authenticated as a donor
+            	String StoredPassword =donorResult.getString("password");
+            
+            	if (StoredPassword != null) {
+                    // Verify the hashed password
+                    BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), StoredPassword);
+                    if(result.verified) {
+                    	user = "Donor";// Return "Donor" if authenticated as an Donor
+                    }
+            		
+            	}
+               
             }else if(adminResult.next()){
+            	String StoredPassword =adminResult.getString("password");
+            	if (StoredPassword != null) {
+                    // Verify the hashed password
+                    BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), StoredPassword);
+                    if(result.verified) {
+                    	user = "Admin";// Return "Admin" if authenticated as an admin
+                    }
+            		
+            	}
             	
-            	user = "Admin";// Return "Admin" if authenticated as an admin
             }
             else {
             	 user =  "Invalid";// Return "Invalid" if not authenticated

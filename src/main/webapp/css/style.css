@@ -2,6 +2,8 @@
 
 
 body {
+	display: flex;
+    flex-direction: column;
     position: relative;
     height: 100vh;
     
@@ -18,4 +20,21 @@ body::before {
     background-size: cover;
     opacity: 0.25;
     z-index: -1; 
+}
+footer {
+	margin-top: auto;
+    background-color: #333; 
+    color: #fff;
+    padding: 5px 0; 
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+.container p {
+    margin: 5px 0;
+    font-size: 16px; 
 }
