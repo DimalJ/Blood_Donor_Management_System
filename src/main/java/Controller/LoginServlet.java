@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.LoginDao;
+import dao.PasswordHashDao;
 
 /**
  * Servlet implementation class LoginServlet
@@ -24,7 +25,7 @@ public class LoginServlet extends HttpServlet {
      */
     public LoginServlet() {
         this.loginDao=new LoginDao();
-        // TODO Auto-generated constructor stub
+        new PasswordHashDao();
     }
 
 	/**
@@ -33,6 +34,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username= request.getParameter("username");
 		String password =request.getParameter("password");
+		
 		String user=loginDao.authenticateUser(username, password);
 		String  firstName=loginDao.getFirstName(username);	
 		

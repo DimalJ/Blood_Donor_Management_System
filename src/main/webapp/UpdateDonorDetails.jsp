@@ -107,7 +107,7 @@
 			<div class="form-group">
 		        <label for="confirmPassword">Confirm Password:</label>
 		        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" value="${donor.password}"required>
-		         <p> check</p>
+		        
        		</div>
        		<div class="button-container">
             	<button type="submit" class="btn btn-primary">Update</button>
@@ -116,12 +116,13 @@
            
         </form>
     </div>
-    <p> check</p>
+   
   <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
    
     <br><br><br>
+    <%@include file="footer.jsp" %>
 </body>
 </html>

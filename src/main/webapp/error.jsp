@@ -10,5 +10,6 @@
 <body>
     <h1>Error</h1>
     <p><%= request.getAttribute("errorMessage") %></p>
+    <%@include file="footer.jsp" %>
 </body>
 </html>
