@@ -16,9 +16,11 @@ public class DonorCRUDDao {
 	private static final String getDonor = "SELECT * FROM donors WHERE id = ?";
 	private static final String DonorByNic = "SELECT * FROM donors WHERE NIC = ?";
 	private static final String login = "SELECT password FROM donors WHERE NIC = ?";
+	private static final String updateDonor = "UPDATE donors SET firstName= ?, lastName= ?, city= ?, birthday= ?, bloodType= ?, email= ?, NIC= ?, mobile= ? WHERE id = ?";
+	private static final String resetPassword = "UPDATE donors SET password= ? WHERE nic = ? AND email=? ";
 	
 	
-	private static final String updateDonor = "UPDATE donors SET firstName= ?, lastName= ?, city= ?, birthday= ?, bloodType= ?, email= ?, NIC= ?, password= ?, mobile= ? WHERE id = ?";
+	
 	private  ArrayList<Donor> donors = new ArrayList<Donor>();
 	private Donor donor;
 	private String password;
@@ -29,6 +31,31 @@ public ArrayList<Donor> clearDonors() {
 	
 	return donors;
  }
+
+
+public boolean updatePasssword( String password,String nic, String email) {
+    boolean isSuccess = false;
+    try (
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement preparedStatement = conn.prepareStatement(resetPassword);
+    ) {
+    	preparedStatement.setString(1, password);
+        preparedStatement.setString(2, nic);
+        preparedStatement.setString(3, email);
+       
+
+        int rowsInserted = preparedStatement.executeUpdate();
+        if (rowsInserted > 0) {
+            isSuccess = true;
+        }
+        conn.close();
+        preparedStatement.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return isSuccess;
+}
+
 public String getPassword(String nic) {
 	 
 	
@@ -99,7 +126,7 @@ public Donor getDonorByNic(String nic) {
     
     return donor;
 }
-public boolean updateCampaign(int id, String firstName, String lastName, String city, String birthday, String bloodType, String email, String nic, String password, String mobile) {
+public boolean updateDonor(int id, String firstName, String lastName, String city, String birthday, String bloodType, String email, String nic, String mobile) {
     boolean isSuccess = false;
     try (
         Connection conn = DbConnection.getConnection();
@@ -112,9 +139,8 @@ public boolean updateCampaign(int id, String firstName, String lastName, String 
         preparedStatement.setString(5, bloodType);
         preparedStatement.setString(6, email);
         preparedStatement.setString(7, nic);
-        preparedStatement.setString(8, password);
-        preparedStatement.setString(9, mobile);
-        preparedStatement.setInt(10, id);
+        preparedStatement.setString(8, mobile);
+        preparedStatement.setInt(9, id);
 
         int rowsInserted = preparedStatement.executeUpdate();
         if (rowsInserted > 0) {

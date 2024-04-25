@@ -53,7 +53,7 @@ public class DonorRegisterServlet extends HttpServlet {
        boolean isTrue=donorCRUDDao.isNICUsed(nic);
         if(isTrue) {
         	 request.setAttribute("Message", "NIC already used. Please try again.");
-             RequestDispatcher dispatcher = request.getRequestDispatcher("registration.jsp");
+             RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
              dispatcher.forward(request, response);
         }else {
 	        	 boolean isSuccess = donorCRUDDao.insertDonor(firstName, lastName, city, birthday, bloodType, email, nic, hashedPassword, mobile);
@@ -65,7 +65,7 @@ public class DonorRegisterServlet extends HttpServlet {
 	             } else {
 	                 // Redirect to error page with error message if registration is unsuccessful
 	                 request.setAttribute("errorMessage", "Registration unsuccessful. Please try again.");
-	                 RequestDispatcher dispatcher = request.getRequestDispatcher("registration.jsp");
+	                 RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
 	                 dispatcher.forward(request, response);
 	             }
              }

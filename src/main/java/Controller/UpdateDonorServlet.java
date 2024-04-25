@@ -42,10 +42,9 @@ public class UpdateDonorServlet extends HttpServlet {
         String bloodType = request.getParameter("bloodType");
         String email = request.getParameter("email");
         String nic = request.getParameter("NIC");
-        String password=request.getParameter("password");
         String mobile = request.getParameter("mobile");
         
-        boolean isUpdate= donorCRUDDao.updateCampaign(id, firstName, lastName, city, birthday, bloodType, email, nic, password, mobile);
+        boolean isUpdate= donorCRUDDao.updateDonor(id, firstName, lastName, city, birthday, bloodType, email, nic, mobile);
         if(isUpdate) {
         	request.setAttribute("Message", "User Updated.");
             
@@ -54,7 +53,7 @@ public class UpdateDonorServlet extends HttpServlet {
             
         }
         String username= (String) request.getSession().getAttribute("username");
-        String user=loginDao.authenticateUser(username, password);
+        String user=loginDao.userType(username);
         if (user=="Donor") {
 			 
 			 	RequestDispatcher dispatcher = request.getRequestDispatcher("DonorDonationListServlet");
