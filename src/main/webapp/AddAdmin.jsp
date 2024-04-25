@@ -14,13 +14,28 @@
         function validatePassword() {
             var password = document.getElementById("password").value;
             var confirmPassword = document.getElementById("confirmPassword").value;
-
+	
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false;
+            }
             if (password != confirmPassword) {
                 alert("Passwords do not match.");
                 return false;
             }
             return true;
         }
+        document.addEventListener("DOMContentLoaded", function() {
+            var passwordInput = document.getElementById("password");
+            passwordInput.addEventListener("input", function() {
+                var password = passwordInput.value;
+                if (password.length < 8) {
+                    document.getElementById("passwordError").innerText = "Password must be at least 8 characters long.";
+                } else {
+                    document.getElementById("passwordError").innerText = "";
+                }
+            });
+        });
     </script>
 </head>
 <body>
@@ -28,7 +43,7 @@
 
     <div class="container">
         <h1 class="mt-5 mb-3">Add Admin User</h1>
-        <form action="<%= request.getServletContext().getContextPath()%>/AddAdminServlet" method="POST">
+        <form action="<%= request.getServletContext().getContextPath()%>/AddAdminServlet" onsubmit="return validatePassword()" method="POST">
             <div class="form-group">
                 <label for="firstName">First Name</label>
                 <input type="text" class="form-control" id="firstName" name="firstName" required>
@@ -44,6 +59,8 @@
              <div class="form-group">
 	            <label for="password">Password:</label>
 	        	<input type="password" class="form-control" id="password" name="password" required>
+	        	<span id="passwordRequirement">Minimum 8 characters</span>
+    			<span id="passwordError" style="color: red;"></span>
 			</div>
 			<div>
 		        <label for="confirmPassword">Confirm Password:</label>

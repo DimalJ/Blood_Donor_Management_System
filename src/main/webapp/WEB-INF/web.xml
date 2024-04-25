@@ -153,5 +153,10 @@
     <servlet-name>AdminDonorDonationListServlet</servlet-name>
     <servlet-class>controller.AdminDonorDonationListServlet</servlet-class>
   </servlet>
-  
+  <servlet>
+  <description></description>
+    <display-name>PasswordResetServlet</display-name>
+    <servlet-name>PasswordResetServlet</servlet-name>
+    <servlet-class>controller.PasswordResetServlet</servlet-class>
+  </servlet>
 </web-app>

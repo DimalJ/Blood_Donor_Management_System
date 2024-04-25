@@ -60,6 +60,8 @@
 	            </div>
 	            <button type="submit" class="btn btn-primary btn-block">Login</button>
 	            <p>Don't have an account? <a href="registration.jsp">Sign up...</a> </p>
+	            <br>
+	            <p>Forget Password? <a href="forgetPassword.jsp">Click here...</a> </p>
 	        </form>
 	    </div>
     </div>

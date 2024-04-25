@@ -26,13 +26,28 @@
         function validatePassword() {
             var password = document.getElementById("password").value;
             var confirmPassword = document.getElementById("confirmPassword").value;
-
+	
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false;
+            }
             if (password != confirmPassword) {
                 alert("Passwords do not match.");
                 return false;
             }
             return true;
         }
+        document.addEventListener("DOMContentLoaded", function() {
+            var passwordInput = document.getElementById("password");
+            passwordInput.addEventListener("input", function() {
+                var password = passwordInput.value;
+                if (password.length < 8) {
+                    document.getElementById("passwordError").innerText = "Password must be at least 8 characters long.";
+                } else {
+                    document.getElementById("passwordError").innerText = "";
+                }
+            });
+        });
         document.getElementById('birthday').addEventListener('change', function() {
             var birthdayInput = this.value;
             var today = new Date();
@@ -59,7 +74,7 @@
 <%@include file="navbar.jsp" %>  
     <div class="container">
         <h1 class="mt-5 mb-3">Update Donor Information</h1>
-        <form action="<%= request.getServletContext().getContextPath()%>/UpdateDonorServlet" method="POST">
+        <form action="<%= request.getServletContext().getContextPath()%>/UpdateDonorServlet" onsubmit="return validatePassword()" method="POST">
             <input type="hidden" class="form-control" id="id" name="id" value="${donor.id}" >
             <div class="form-group">
                 <label for="firstName">First Name</label>
@@ -100,15 +115,10 @@
                 <label for="NIC">NIC</label>
                 <input type="text" class="form-control" id="NIC" name="NIC" value="${donor.nic}" required>
             </div>
-             <div class="form-group">
-	            <label for="password">Password:</label>
-	        	<input type="password" class="form-control" id="password" name="password" value="${donor.password}"required>
-			</div>
-			<div class="form-group">
-		        <label for="confirmPassword">Confirm Password:</label>
-		        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" value="${donor.password}"required>
-		        
-       		</div>
+            <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input type="text" class="form-control" id="mobile" name="mobile" value="${donor.mobile}" required>
+            </div>
        		<div class="button-container">
             	<button type="submit" class="btn btn-primary">Update</button>
              	<button type="button" onclick="goBack()">Cancel</button>

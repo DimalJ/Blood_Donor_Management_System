@@ -11,6 +11,44 @@ public class LoginDao {
 	PasswordHashDao ph;
 	private String user,firstName;
     // Method to authenticate user
+	
+	public String userType(String username) {
+		 try (
+		        	Connection conn = DbConnection.getConnection();
+		            PreparedStatement donorStatement = conn.prepareStatement("SELECT * FROM donors WHERE NIC = ?");
+		            PreparedStatement adminStatement = conn.prepareStatement("SELECT * FROM admin WHERE username = ?")
+		        ) {
+		            // Check in donor table
+		            donorStatement.setString(1, username);
+		            
+		            ResultSet donorResult = donorStatement.executeQuery();
+		            adminStatement.setString(1, username);
+		           
+		            ResultSet adminResult = adminStatement.executeQuery();
+		            if (donorResult.next()) {
+		                    user = "Donor";
+		                
+		            }else if(adminResult.next()){
+		                    	user = "Admin";
+		            }
+		            else {
+		            	 user =  "Invalid";// Return "Invalid" if not authenticated
+		            }
+
+		         
+		            donorStatement.close();
+		            adminStatement.close();
+		            adminResult.close();
+		            donorResult.close();
+		            conn.close();
+		           
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		            user =  "Error";
+		        }
+		        return user;
+	}
+	
     public String authenticateUser(String username, String password) {
         try (
         	Connection conn = DbConnection.getConnection();
