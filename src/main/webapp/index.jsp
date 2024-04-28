@@ -19,6 +19,16 @@
             text-align: center;
             vertical-align: middle !important;
     </style>
+    <script type="text/javascript">
+    // Retrieve the success message from the servlet
+    var successMessage = "${Message}";
+
+    // Check if the success message is not empty
+    if (successMessage.trim() !== "") {
+        // Display the success message as a pop-up
+        alert(successMessage);
+    }
+</script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
@@ -37,9 +47,7 @@
             </div>
         </div>
     </nav>
-	<div class="container">
-		${Message}
-	</div>
+	
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-12">

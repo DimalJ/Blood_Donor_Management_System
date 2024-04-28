@@ -42,9 +42,7 @@
 	</nav>
 </div>
   <br> <br> 
-  	<div class="container">
-  	${Message}
-  	</div>
+  	
   	<br>
   <div class="container">
     <h2>Donation List</h2>

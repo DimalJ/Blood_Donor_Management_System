@@ -196,8 +196,9 @@ public Donor getDonor(int id) {
 }
 public boolean deleteDonor(int donorId) {
     boolean rowDeleted = false;
-    try (Connection conn = DbConnection.getConnection();
-         PreparedStatement preparedStatement = conn.prepareStatement(deleteDonor);)
+    try (
+    		Connection conn = DbConnection.getConnection();
+    		PreparedStatement preparedStatement = conn.prepareStatement(deleteDonor);)
     {
     	preparedStatement.setInt(1, donorId);
         rowDeleted = preparedStatement.executeUpdate() > 0;
@@ -226,11 +227,10 @@ public ArrayList<Donor> searchByName(String name) {
                     String firstName = resultSet.getString("firstName");
                     String lastName = resultSet.getString("lastName");
                     
-                   
                     donors.add(new Donor(id, NIC, firstName, lastName));
                     
                     
-                }else {
+               } else {
                 	donors=null;
                 }
 	            }

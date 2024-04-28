@@ -19,6 +19,13 @@
         }
         
     }
+ // Retrieve the success message from the servlet
+    var successMessage = "${Message}";
+
+    // Check if the success message is not empty
+    if (successMessage.trim() !== "") {
+        // Display the success message as a pop-up
+        alert(successMessage);
     
 </script>
 <style>
@@ -33,7 +40,7 @@
 </head>
 <body>
 <%@include file="navbar.jsp" %>
-	${Message}
+	
 <div class="container">
     <h2>Campaign List</h2>
     <table class="table table-striped table-bordered table-striped-custom">

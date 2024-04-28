@@ -8,14 +8,21 @@
 <link rel="icon" href="./images/blood.ico" type="image/x-icon">
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
  <link rel="stylesheet" href="./css/style.css">
+ <script>
+	//Retrieve the success message from the servlet
+	 var successMessage = "${Message}";
+	
+	 // Check if the success message is not empty
+	 if (successMessage.trim() !== "") {
+	     // Display the success message as a pop-up
+	     alert(successMessage);
+ </script>
 </head>
 <body>
 <%@include file="navbar.jsp" %>
 <div class="container mt-5">
     <h2>Blood Donation</h2>
-    <div class="container">
-    	${Message}
-    </div>
+   
     <form action="<%= request.getServletContext().getContextPath()%>/AddDonationServlet" method="post">
       <div class="form-group">
         <label for="nic">NIC</label>

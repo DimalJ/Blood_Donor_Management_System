@@ -28,6 +28,14 @@
             }
             
         }
+     // Retrieve the success message from the servlet
+        var successMessage = "${Message}";
+
+        // Check if the success message is not empty
+        if (successMessage.trim() !== "") {
+            // Display the success message as a pop-up
+            alert(successMessage);
+            }
         
  </script>
     
@@ -64,9 +72,7 @@
         </form>
   </div>
   <br> <br> 
-  	<div class="container">
-  	${Message}
-  	</div>
+  	
   	<br>
   <div class="container">
     <h2>User List</h2>

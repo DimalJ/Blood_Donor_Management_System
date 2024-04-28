@@ -30,6 +30,13 @@
                 }
             }
         }
+     // Retrieve the success message from the servlet
+        var successMessage = "${Message}";
+
+        // Check if the success message is not empty
+        if (successMessage.trim() !== "") {
+            // Display the success message as a pop-up
+            alert(successMessage);
  </script>
     
     
@@ -51,7 +58,7 @@
  <h2>Search Admin users</h2>
  </div>
  <div class="container mt-8">
-        <h1>Admin user Search</h1>
+      
         <form action="<%= request.getServletContext().getContextPath()%>/SearchAdminServlet" method="get" class="form-inline" onsubmit="return validateForm()">
             <div class="form-group mr-2">
                 <label for="nic">NIC: </label>
@@ -65,9 +72,7 @@
         </form>
   </div>
   <br> <br> 
-  	<div class="container">
-  	${Message}
-  	</div>
+  
   	<br>
   <div class="container">
     <h2>User List</h2>

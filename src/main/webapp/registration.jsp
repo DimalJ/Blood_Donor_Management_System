@@ -25,6 +25,13 @@
             }
             return true;
         }
+     // Retrieve the success message from the servlet
+        var successMessage = "${Message}";
+
+        // Check if the success message is not empty
+        if (successMessage.trim() !== "") {
+            // Display the success message as a pop-up
+            alert(successMessage);
     </script>
 </head>
 <body>
@@ -37,9 +44,7 @@
 
         </div>
   </nav>
-  <div class="container">
-  ${Message}
-  </div>
+  
     <div class="container">
         <h1 class="mt-5 mb-3">Donor Registration</h1>
         <form action="<%= request.getServletContext().getContextPath()%>/DonorRegisterServlet" onsubmit="return validatePassword()" method="POST">
