@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,7 +37,10 @@ public class AddCampaignServlet extends HttpServlet {
 		String dateStr = request.getParameter("date");
         String location = request.getParameter("location");
         String city = request.getParameter("city");
-
+        String strTime=request.getParameter("time");
+        String validStrTime = strTime + ":00";
+        System.out.println(validStrTime);
+        Time time = Time.valueOf(validStrTime);
         // Convert date string to java.util.Date
         Date date = null;
         try {
@@ -49,7 +53,7 @@ public class AddCampaignServlet extends HttpServlet {
             return;
         }
 		
-		boolean isSuccess=campaignCRUDDao.insertCampaign(date, location, city);
+		boolean isSuccess=campaignCRUDDao.insertCampaign(date, location, city,time);
 		if(isSuccess) {
 			request.setAttribute("Message", "New Campaign Added.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("AdminHome.jsp");

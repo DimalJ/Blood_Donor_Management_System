@@ -18,6 +18,11 @@
     if (successMessage.trim() !== "") {
         // Display the success message as a pop-up
         alert(successMessage);
+        
+        document.getElementById("donationTime").addEventListener("change", function() {
+            var timeInput = this.value;
+            // Perform additional validation or formatting if needed
+        });
     </script>
 </head>
 <body>
@@ -36,6 +41,10 @@
         <div class="form-group">
             <label for="city">City:</label>
             <input type="text" class="form-control" id="city" name="city" required>
+        </div>
+        <div class="form-group">
+            <label for="city">Start Time</label>
+            <input type="time" class="form-control" id="time" name="time" step="1800" required>
         </div>
         <button type="submit" class="btn btn-primary">Add Campaign</button>
     </form>

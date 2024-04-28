@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Time;
 import java.util.Date;
 
 public class Campaign {
@@ -7,13 +8,22 @@ public class Campaign {
     private Date date;
     private String location;
     private String city;
+    private Time time;
+    public Time getTime() {
+		return time;
+	}
 
-    // Constructors
-    public Campaign(int id, Date date, String location, String city) {
+	public void setTime(Time time) {
+		this.time = time;
+	}
+
+	// Constructors
+    public Campaign(int id, Date date, String location, String city, Time time) {
         this.id = id;
         this.date = date;
         this.location = location;
         this.city = city;
+        this.time = time;
     }
 
     public Campaign(Date date, String location, String city) {
