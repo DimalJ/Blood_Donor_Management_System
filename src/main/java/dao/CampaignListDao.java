@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
+
+
 
 import model.Campaign;
 
@@ -34,9 +37,10 @@ public ArrayList<Campaign> getCampaignByCity(String userCity) {
 		     Date date = resultSet.getDate("date");
 		     String location = resultSet.getString("location");
 		     String city = resultSet.getString("city");
+		     Time time=resultSet.getTime("time");
 
 		     // Create Campaign object and add it to the list
-		     CampaignList.add(new Campaign(id, date, location, city));
+		     CampaignList.add(new Campaign(id, date, location, city,time));
 		 }
 
 		 // Close resources
@@ -68,9 +72,10 @@ public ArrayList<Campaign> getCampaignByCity(String userCity) {
 			     Date date = resultSet.getDate("date");
 			     String location = resultSet.getString("location");
 			     String city = resultSet.getString("city");
+			     Time time=resultSet.getTime("time");
 
 			     // Create Campaign object and add it to the list
-			     CampaignList.add(new Campaign(id, date, location, city));
+			     CampaignList.add(new Campaign(id, date, location, city,time));
 			 }
 
 			 // Close resources

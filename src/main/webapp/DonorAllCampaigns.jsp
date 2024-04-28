@@ -46,6 +46,7 @@
                     <th>Date</th>
                     <th>Location</th>
                     <th>City</th>
+                    <th>Start Time</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,6 +55,7 @@
                         <td>${campaign.date}</td>
                         <td>${campaign.location}</td>
                         <td>${campaign.city}</td>
+                        <td>${campaign.time}</td>
                     </tr>
                 </c:forEach>
             </tbody>

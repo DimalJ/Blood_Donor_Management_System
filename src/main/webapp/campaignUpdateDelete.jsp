@@ -50,6 +50,7 @@
                 <th>Date</th>
                 <th>Location</th>
                 <th>City</th>
+                <th>Start Time</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -61,9 +62,10 @@
                     <td>${campaign.date}</td>
                     <td>${campaign.location}</td>
                     <td>${campaign.city}</td>
+                    <td>${campaign.time}</td>
                     <td>
                         <!-- Update button -->
-                        <a href="updateCampaign.jsp?id=${campaign.id}&date=${campaign.date}&location=${campaign.location}&city=${campaign.city}" class="btn btn-primary">Update</a>
+                        <a href="updateCampaign.jsp?id=${campaign.id}&date=${campaign.date}&location=${campaign.location}&city=${campaign.city}&time=${campaign.time}" class="btn btn-primary">Update</a>
                         
                         <!-- Delete button -->
                          <Button  class="btn btn-danger" onclick="confirmDelete(${campaign.id})">Delete</Button>

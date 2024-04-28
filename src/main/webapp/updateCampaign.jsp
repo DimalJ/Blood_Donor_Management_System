@@ -38,6 +38,10 @@
             <label for="city">City:</label>
             <input type="text" class="form-control" id="city" name="city" value="${param.city}" required>
         </div>
+        <div class="form-group">
+            <label for="city">Start Time</label>
+            <input type="time" class="form-control" id="time" name="time" step="1800" value="${param.time}" required>
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
   </div>

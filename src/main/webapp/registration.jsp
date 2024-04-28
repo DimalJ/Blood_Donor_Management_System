@@ -86,6 +86,7 @@
             <div class="form-group">
                 <label for="NIC">NIC</label>
                 <input type="text" class="form-control" id="NIC" name="NIC" required>
+                 <small id="nicType" class="form-text text-muted">Use "V" for old format.</small>
             </div>
              <div class="form-group">
 	            <label for="password">Password:</label>
