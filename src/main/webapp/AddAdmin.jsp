@@ -36,6 +36,15 @@
                 }
             });
         });
+        // Retrieve the success message from the servlet
+        var successMessage = "${Message}";
+
+        // Check if the success message is not empty
+        if (successMessage.trim() !== "") {
+            // Display the success message as a pop-up
+            alert(successMessage);
+        }
+ 
     </script>
 </head>
 <body>

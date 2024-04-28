@@ -21,7 +21,7 @@ import model.Donor;
 public class SearchDonorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private DonorCRUDDao donorCRUDDao;
-    private ArrayList<Donor> donorList;
+    
 	
 	
 	/**
@@ -38,7 +38,8 @@ public class SearchDonorServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nic = request.getParameter("nic");
 		String name = request.getParameter("name");
-		donorList=donorCRUDDao.clearDonors();
+		
+		ArrayList<Donor> donorList= donorCRUDDao.clearDonors();
 		donorList=donorCRUDDao.searchDonors(nic, name);
 			
 			if(donorList==null) {

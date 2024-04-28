@@ -34,6 +34,16 @@
             margin-bottom: 20px;
         }
     </style>
+    <script>
+ // Retrieve the success message from the servlet
+    var successMessage = "${Message}";
+
+    // Check if the success message is not empty
+    if (successMessage.trim() !== "") {
+        // Display the success message as a pop-up
+        alert(successMessage);
+        }
+    </script>
 </head>
 <body>
  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
@@ -49,7 +59,7 @@
 	    <div class="login-box">
 	        <h2>Login</h2>
 	        <form action="<%= request.getServletContext().getContextPath()%>/LoginServlet" method="POST">
-	        	${Message}
+	        
 	            <div class="form-group">
 	                <label for="username">Username</label>
 	                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">

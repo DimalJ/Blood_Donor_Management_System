@@ -64,7 +64,7 @@ public class DonorRegisterServlet extends HttpServlet {
 	                 dispatcher.forward(request, response);
 	             } else {
 	                 // Redirect to error page with error message if registration is unsuccessful
-	                 request.setAttribute("errorMessage", "Registration unsuccessful. Please try again.");
+	                 request.setAttribute("Message", "Registration unsuccessful. Please try again.");
 	                 RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
 	                 dispatcher.forward(request, response);
 	             }
