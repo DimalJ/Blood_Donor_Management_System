@@ -37,7 +37,7 @@ public class PasswordResetServlet extends HttpServlet {
         String nic = request.getParameter("username");
         String password=request.getParameter("password");
         
-        System.out.println(email + " "+nic+" " + password);
+       
         String hashedPassword=passwordHashDao.hashPassword(password);
        
          boolean isSuccess = donorCRUDDao.updatePasssword(hashedPassword, nic, email);
