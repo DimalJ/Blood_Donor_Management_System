@@ -28,7 +28,7 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Invalidate session
         request.getSession().invalidate();
-
+        
         // Redirect to index page or login page
         response.sendRedirect("CampaignListServlet");
 	}

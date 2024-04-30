@@ -26,6 +26,7 @@
     if (successMessage.trim() !== "") {
         // Display the success message as a pop-up
         alert(successMessage);
+    }
     </script>
 </head>
 <body>

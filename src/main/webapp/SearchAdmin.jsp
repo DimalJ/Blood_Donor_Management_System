@@ -37,6 +37,7 @@
         if (successMessage.trim() !== "") {
             // Display the success message as a pop-up
             alert(successMessage);
+        }
  </script>
     
     
@@ -61,7 +62,7 @@
       
         <form action="<%= request.getServletContext().getContextPath()%>/SearchAdminServlet" method="get" class="form-inline" onsubmit="return validateForm()">
             <div class="form-group mr-2">
-                <label for="nic">NIC: </label>
+                <label for="nic">Username: </label>
                 <input type="text" class="form-control" id="username" name="username">
             </div>
             <div class="form-group mr-2">

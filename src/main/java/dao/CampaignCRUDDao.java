@@ -61,7 +61,7 @@ public class CampaignCRUDDao {
 	
 
     public boolean deleteCampaign(int campaignId) throws SQLException {
-        boolean rowDeleted;
+        boolean rowDeleted=false;
         try (Connection conn = DbConnection.getConnection();
                 PreparedStatement preparedStatement = conn.prepareStatement(deleteCampaign);)
         {

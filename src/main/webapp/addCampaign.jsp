@@ -18,6 +18,7 @@
     if (successMessage.trim() !== "") {
         // Display the success message as a pop-up
         alert(successMessage);
+    }
         
         document.getElementById("donationTime").addEventListener("change", function() {
             var timeInput = this.value;
