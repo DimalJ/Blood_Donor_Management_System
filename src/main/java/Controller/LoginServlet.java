@@ -20,6 +20,7 @@ import dao.PasswordHashDao;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private LoginDao loginDao;  
+    String user=null;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 		String username= request.getParameter("username");
 		String password =request.getParameter("password");
 		
-		String user=loginDao.authenticateUser(username, password);
+		user=loginDao.authenticateUser(username, password);
 		String  firstName=loginDao.getFirstName(username);	
 		
 		HttpSession session = request.getSession();

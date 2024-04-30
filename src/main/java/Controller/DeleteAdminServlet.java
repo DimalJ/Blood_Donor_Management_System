@@ -33,8 +33,9 @@ public class DeleteAdminServlet extends HttpServlet {
 		String strAdminId = request.getParameter("adminId");
 		int adminId = Integer.parseInt(strAdminId);
 		String strPassword = request.getParameter("password");
+		
 		int password = Integer.parseInt(strPassword);
-		System.out.println(adminId+" "+password);
+		
 		int number = adminCRUDDao.deleteAdmin(password,adminId);
 		
 

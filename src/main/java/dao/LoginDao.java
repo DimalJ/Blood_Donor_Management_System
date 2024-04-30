@@ -9,10 +9,12 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class LoginDao {
 	PasswordHashDao ph;
-	private String user,firstName;
+	private String firstName;
+	String StoredPassword=null;
     // Method to authenticate user
 	
 	public String userType(String username) {
+		String user="";
 		 try (
 		        	Connection conn = DbConnection.getConnection();
 		            PreparedStatement donorStatement = conn.prepareStatement("SELECT * FROM donors WHERE NIC = ?");
@@ -50,7 +52,9 @@ public class LoginDao {
 	}
 	
     public String authenticateUser(String username, String password) {
-        try (
+    	String user="";
+    	
+    	try (
         	Connection conn = DbConnection.getConnection();
             PreparedStatement donorStatement = conn.prepareStatement("SELECT * FROM donors WHERE NIC = ?");
             PreparedStatement adminStatement = conn.prepareStatement("SELECT * FROM admin WHERE username = ?")
@@ -63,8 +67,8 @@ public class LoginDao {
            
             ResultSet adminResult = adminStatement.executeQuery();
             if (donorResult.next()) {
-            	String StoredPassword =donorResult.getString("password");
-            
+            	StoredPassword =donorResult.getString("password");
+            	
             	if (StoredPassword != null) {
                     // Verify the hashed password
                     BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), StoredPassword);
@@ -74,10 +78,12 @@ public class LoginDao {
             		
             	}
                
-            }else if(adminResult.next()){
-            	String StoredPassword =adminResult.getString("password");
+            }
+            if(adminResult.next()){
+            	StoredPassword =adminResult.getString("password");
             	if (StoredPassword != null) {
                     // Verify the hashed password
+            		
                     BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), StoredPassword);
                     if(result.verified) {
                     	user = "Admin";// Return "Admin" if authenticated as an admin
@@ -86,9 +92,7 @@ public class LoginDao {
             	}
             	
             }
-            else {
-            	 user =  "Invalid";// Return "Invalid" if not authenticated
-            }
+           
 
          
             donorStatement.close();
@@ -101,6 +105,7 @@ public class LoginDao {
             e.printStackTrace();
             user =  "Error";
         }
+    	
         return user;
     }
     public String getFirstName(String id) {
@@ -137,7 +142,7 @@ public class LoginDao {
            
         } catch (SQLException e) {
             e.printStackTrace();
-            user =  "unknown";
+            firstName =  "unknown";
         }
         return firstName;
     }

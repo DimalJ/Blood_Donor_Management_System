@@ -34,6 +34,7 @@
         if (successMessage.trim() !== "") {
             // Display the success message as a pop-up
             alert(successMessage);
+        }
  </script>
 
 <!-- Bootstrap CSS -->
@@ -72,16 +73,7 @@
         </form>
   </div>
   <br> <br> 
-  	<script type="text/javascript">
- // Retrieve the success message from the servlet
-    var successMessage = "${Message}";
-
-    // Check if the success message is not empty
-    if (successMessage.trim() !== "") {
-        // Display the success message as a pop-up
-        alert(successMessage);
-  	</script>
-  		${Message}
+  
   <div class="container">
     <h2>Donation List</h2>
     <table class="table table-striped table-bordered table-striped-custom">
